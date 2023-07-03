@@ -1,0 +1,13 @@
+name: pixelmcdonations
+main: co.pixelmc.PixelMCDonations
+version: 1.0
+commands:
+  ranks:
+    description: List ranks
+    usage: /<command>
+    permission: co.pixelmc.ranks
+    permission-message: You don't have <permission>
+  pixelmcdonations:
+    description: Base command
+    usage: /<command> applydonation <uuid> <perk> <amount>
+    permission-message: You don't have <permission>

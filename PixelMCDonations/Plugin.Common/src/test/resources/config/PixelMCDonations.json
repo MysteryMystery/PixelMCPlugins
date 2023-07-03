@@ -1,0 +1,24 @@
+{
+  "thresholds": [
+    {
+      "rankName": "Member",
+      "minThreshold": 10.0,
+      "commands": [
+        "lp user {{uuid}} parent add member"
+      ],
+      "displayName": "&e&l[Trainer]"
+    },
+    {
+      "rankName": "Trainer",
+      "minThreshold": 20.0,
+      "commands": [
+        "say hello"
+      ],
+      "displayName": "c"
+    }
+  ],
+  "perks": [
+    "fly",
+    "bulbasaurx1"
+  ]
+}
