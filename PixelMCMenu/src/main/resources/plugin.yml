@@ -1,0 +1,9 @@
+name: PixelMCMenu
+version: '${version}'
+main: co.pixelmc.pixelmcmenu.PixelMCMenu
+api-version: '1.16'
+commands:
+  pixelmc:
+    description: Launch GUI
+    usage: /<command>
+    permission: pixelmcmenu.base

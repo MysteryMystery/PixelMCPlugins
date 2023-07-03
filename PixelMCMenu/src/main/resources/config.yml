@@ -1,0 +1,17 @@
+size: 54
+pages:
+  - title: Page 1
+    size: 54 # optional, defaults to parent
+    items:
+      - title: Pokemon edits
+        displayItem: pixelmon:pokeball
+        lore:
+          - Edit your Pokemon's stats and aesthetics!
+        index: 0
+        command: sudo {user} pixeledit
+      - title: Bingo
+        displayItem: pixelmon:coin_case
+        lore:
+          - Open your bingo card!
+        index: 9
+        command: sudo {user} bingo
