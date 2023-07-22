@@ -3,8 +3,11 @@ package co.pixelmc.pixelmcmenu.inventory;
 import co.pixelmc.pixelmcmenu.models.CommandMenu;
 import co.pixelmc.pixelmcmenu.models.CommandMenuPage;
 import co.pixelmc.pixelmcmenu.models.CommandMenuSlot;
+import co.pixelmc.pixelmcmenu.placeholders.PlaceholderParser;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -93,6 +96,15 @@ public class CommandMenuInventory implements Listener {
        }
     }
 
+    private void runCommand(final CommandMenuSlot slot, final Player p){
+        PlaceholderParser placeholderParser = PlaceholderParser.builder()
+                .withPlayer(p)
+                .build();
+
+        String command = placeholderParser.parse(slot.command);
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
+    }
+
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent e) {
         if (!e.getInventory().equals(inventory))
@@ -113,7 +125,7 @@ public class CommandMenuInventory implements Listener {
         slotOpt.ifPresent(slot -> {
             switch (slot.inventoryAction){
                 case COMMAND:
-                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), slot.command);
+                    runCommand(slot, p);
                     break;
                 case PAGE_NEXT:
                     nextPage();
