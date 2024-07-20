@@ -1,13 +1,11 @@
-#PixelMC Donations
-
-##Roadmap 
+# PixelMC Donations
+## Roadmap 
 - refactor repositories
 - implement perks
 - implement dependency injection
 - implement subcommands
 
-##setup / commands
-
+## setup / commands
 All commands start with `pixelmcdonations`
 
 |command   |description|
