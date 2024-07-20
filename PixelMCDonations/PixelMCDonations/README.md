@@ -1,5 +1,4 @@
 # PixelMC Donations
-
 ## Roadmap 
 - refactor repositories
 - implement perks
@@ -7,7 +6,6 @@
 - implement subcommands
 
 ## setup / commands
-
 All commands start with `pixelmcdonations`
 
 |command   |description|
