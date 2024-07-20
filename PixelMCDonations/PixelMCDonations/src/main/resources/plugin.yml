@@ -1,0 +1,9 @@
+name: PixelMCDonations
+version: '${version}'
+main: co.pixelmc.pixelmcdonations.PixelMCDonations
+api-version: '1.17'
+commands:
+  pixelmcdonations:
+    description: The root command
+    usage: /<command>
+    permission: pixelmcdonations.root
