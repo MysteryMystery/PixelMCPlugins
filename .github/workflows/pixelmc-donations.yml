@@ -28,4 +28,5 @@ jobs:
       run: chmod +x ${{ github.workspace }}/PixelMCDonations/PixelMCDonations/gradlew
 
     - name: Build with Gradle Wrapper
-      run: ${{ github.workspace }}/PixelMCDonations/PixelMCDonations/gradlew build
+      run: ./gradlew build
+      working-directory: ${{ github.workspace }}/PixelMCDonations/PixelMCDonations
