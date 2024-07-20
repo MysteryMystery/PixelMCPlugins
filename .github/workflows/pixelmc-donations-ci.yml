@@ -37,7 +37,7 @@ jobs:
       with:
         name: pixelmcdonations
         path: |
-          ${{ github.workspace }}\PixelMCDonations\PixelMCDonations\build\libs
+          PixelMCDonations/PixelMCDonations/build/libs
   
   publish_release: 
     if: startsWith(github.ref, 'refs/tags/')
