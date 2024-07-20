@@ -2,7 +2,7 @@
 CREATE TABLE Players (
     PlayerID INT NOT NULL AUTO_INCREMENT,
 
-    PlayerGUID CHAR(16),
+    PlayerGUID TEXT,
 
     PRIMARY KEY (PlayerID)
 );
@@ -16,6 +16,17 @@ CREATE TABLE Donations (
 
     PRIMARY key (DonationID),
     FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID)
+);
+
+CREATE TABLE RANKS (
+    RankID INT NOT NULL AUTO_INCREMENT,
+    ServerID INT NOT NULL, 
+    RankName TEXT NOT NULL,
+    DonationThreshold DECIMAL(10,2),
+    Command TEXT,
+
+    PRIMARY KEY (RankID),
+    FOREIGN KEY (ServerID) REFERENCES Servers(ServerID)
 );
 
 -- Table for storing server information
@@ -50,4 +61,17 @@ CREATE TABLE PlayerServerPerks (
     FOREIGN KEY (ServerID) REFERENCES Servers(ServerID),
     FOREIGN KEY (PerkID) REFERENCES Perks(PerkID),
     PRIMARY KEY (PlayerID, ServerID, PerkID)
+);
+
+
+-- Junction table to manage ranks claimed by players on specific servers
+CREATE TABLE PlayerServerRanks (
+    PlayerID INT,
+    RankID INT,
+    Claimed BIT DEFAULT 0,
+    ClaimDate DATETIME,
+
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID),
+    FOREIGN KEY (RankID) REFERENCES Ranks(RankID),
+    PRIMARY KEY (PlayerID, RankID)
 );

@@ -12,6 +12,8 @@ public class PixelMCDonations extends JavaPlugin {
     private DatabaseOptions _databaseOptions;
     private static PixelMCDonations _instance;
 
+    private int _serverId;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -27,7 +29,9 @@ public class PixelMCDonations extends JavaPlugin {
           this._config.getString("database.password")
         );
 
-        //registerCommands();
+        _serverId = this._config.getInt("server_id");
+
+        registerCommands();
     }
 
     @Override
@@ -45,5 +49,9 @@ public class PixelMCDonations extends JavaPlugin {
 
     public DatabaseOptions getDatabaseOptions(){
         return _databaseOptions;
+    }
+
+    public int getServerId() {
+        return _serverId;
     }
 }

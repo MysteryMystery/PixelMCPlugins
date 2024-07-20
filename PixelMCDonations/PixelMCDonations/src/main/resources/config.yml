@@ -2,3 +2,4 @@ database:
   connection_string: 'jdbc:mysql://localhost:3306/PixelMCDonation'
   username: 'root'
   password: ''
+server_id: 1

@@ -57,11 +57,13 @@ public class ServerRepository {
             statement.setString(1, serverName);
             statement.setString(2, serverDescription);
 
-            return statement.execute();
+            statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+
+        return true;
     }
 }
