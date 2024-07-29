@@ -40,9 +40,8 @@ public class PlayerRepository {
         return true;
     }
 
-    public List<Player> getPlayer(UUID uuid){
+    public Player getPlayer(UUID uuid){
         String query = "SELECT PlayerId, PlayerGUID from players where PlayerGUID = ?";
-        ArrayList<Player> result = new ArrayList<>();
 
         try(
                 Connection conn = DriverManager.getConnection(
@@ -55,17 +54,15 @@ public class PlayerRepository {
             statement.setString(1, uuid.toString());
 
             ResultSet rs = statement.executeQuery();
-            while(rs.next()){
-                Player player = new Player(
-                        rs.getInt(1),
-                        UUID.fromString(rs.getString(2))
-                );
-                result.add(player);
-            }
+            rs.next();
+            return  new Player(
+                    rs.getInt(1),
+                    UUID.fromString(rs.getString(2))
+            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return result;
+        return null;
     }
 }
