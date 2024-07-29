@@ -29,23 +29,15 @@ public abstract class AbstractSubCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
-        if(args.length > 0 && subcommands.containsKey(label)){
-            AbstractSubCommand subCommand = subcommands.get(label);
-            if (subCommand.validate(sender)){
-                return subCommand.onCommand(
-                        sender,
-                        command,
-                        args[0],
-                        (String[]) Arrays.stream(args).skip(1).toArray()
-                );
-            }
+        if(args.length > 0 && subcommands.containsKey(args[0])){
+            AbstractSubCommand subCommand = subcommands.get(args[0]);
 
             return subCommand.validate(sender) &&
                     subCommand.onCommand(
                         sender,
                         command,
                         args[0],
-                        (String[]) Arrays.stream(args).skip(1).toArray()
+                        Arrays.stream(args).skip(1).toArray(String[]::new)
                 );
         }
 
