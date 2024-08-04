@@ -1,4 +1,7 @@
 # PixelMC Donations
+
+![PixelMCDonations](https://github.com/MysteryMystery/PixelMCPlugins/actions/workflows/pixelmc-donations-ci.yml/badge.svg)
+
 ## Roadmap 
 - refactor repositories
 - implement perks
