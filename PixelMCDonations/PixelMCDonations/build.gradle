@@ -15,11 +15,31 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+
+    maven {
+        name = "maven"
+        url = 'https://repo1.maven.org/maven2'
+    }
 }
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+
+    maxHeapSize = '1G'
+
+    testLogging {
+        events "passed"
+    }
+}
+
+
 
 def targetJavaVersion = 17
 java {
