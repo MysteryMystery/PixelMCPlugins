@@ -6,10 +6,15 @@ import java.util.List;
 
 public class MinecraftTextBuilder {
     private List<MinecraftTextBuilderLine> lines = new ArrayList<>();
-    private PlaceHolderStringHandler placeHolderStringHandler = new PlaceHolderStringHandler();
+    private PlaceHolderParser placeHolderParser = new PlaceHolderParser();
 
-    public PlaceHolderStringHandler getPlaceHolderStringHandler() {
-        return placeHolderStringHandler;
+    public PlaceHolderParser getPlaceHolderParser() {
+        return placeHolderParser;
+    }
+
+    public MinecraftTextBuilder withParser(PlaceHolderParser parser){
+        placeHolderParser = parser;
+        return this;
     }
 
     public MinecraftTextBuilder addLine(MinecraftTextBuilderLine ... entries){
@@ -20,7 +25,7 @@ public class MinecraftTextBuilder {
     public String[] getLines(){
         return lines
                 .stream()
-                .map(x -> placeHolderStringHandler.getString(x.toString()))
+                .map(x -> placeHolderParser.parse(x.toString()))
                 .toArray(String[]::new);
     }
 }

@@ -21,9 +21,12 @@ public class MinecraftTextBuilderTest {
     @Test
     void minecraftTextBuilder_should_replace_placeholders(){
         MinecraftTextBuilder b = new MinecraftTextBuilder()
-                .addLine(MinecraftTextBuilderLine.of(MinecraftColour.YELLOW, "hi, {playerName}"));
-
-        b.getPlaceHolderStringHandler().replacePlayerName("MysteryMystery");
+                .addLine(MinecraftTextBuilderLine.of(MinecraftColour.YELLOW, "hi, {playerName}"))
+                .withParser(
+                    PlaceHolderParser.builder()
+                            .replacePlayerName("MysteryMystery")
+                            .build()
+                );
 
         String[] result = b.getLines();
 
