@@ -21,7 +21,7 @@ public class PixelMCDonationsCommand extends AbstractSubCommand {
 
     @Override
     protected String getLabel() {
-        return "pixelmcdonations";
+        return "pixelmc";
     }
 
     private String[] getHelpOutput(){

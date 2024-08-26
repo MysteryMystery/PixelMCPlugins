@@ -75,7 +75,7 @@ public class DonationRepository {
         double amountDonated = getDonationSum(player);
 
         List<Rank> ranks = new RankRepository(_databaseOptions)
-                .getRanks()
+                .getUnclaimedRanks(serverId, player.getPlayerId())
                 .stream()
                 .filter(x -> x.getServerId() == serverId)
                 .filter(x -> x.getDonationThreshold() <= amountDonated)

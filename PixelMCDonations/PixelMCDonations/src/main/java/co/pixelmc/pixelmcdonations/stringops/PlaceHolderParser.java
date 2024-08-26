@@ -51,7 +51,6 @@ public class PlaceHolderParser {
             return this;
         }
 
-
         public PlaceHolderParserBuilder replaceString(String placeholder, String replacement) {
             rules.put("\\{" + placeholder + "}", replacement);
             return this;
